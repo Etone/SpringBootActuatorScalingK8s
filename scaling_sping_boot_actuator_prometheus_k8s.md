@@ -3,23 +3,43 @@ The default way to scale Pods in Kubernetes is scaling by CPU Usage. It is easy 
 
 I will explain to you, how you can use any metric you want to scale by using Spring Boot and Prometheus.
 
-## History
-As always lets have a small look into how things where handled and what changed.
-### 2016 - Kubernetes Version 1.2
-With the release of K8s v1.2.0 the *autoscaling/v1* API was released and with it the HPA was put out of beta. To scale your application on specific metrics you could use an annotation based system.
-### 2017 - Kubernetes Version 1.6
-With K8s v1.6.0 the whole HPA was reworked. Instead of using Heapster to collect metrics from the cluster a new metrics-server was added with a new API. This added the ability to scale on multiple metrics and also, much more important for this post, unified the way to provide Custom Metrics for Pods.
+**IMAGE: HPA -> metrics-server -> Pods / -> adapter -> Prometheus -> Pods**
 
-As you can see in *Image current API Metrics diagram*, there are multiple Endpoints, that are fetched. Each of those endpoints is created by a different API Server, the ```metrics.k8s.io``` f.e is created by K8s metrics-server. To scale the application I will host Prometheus, let it scrape our pods and collect all the Spring Boot Actuator metrics. After that I will host the prometheus-k8s-adapter *Link in links and futher reading* to provide the metrics to K8s.
+As you can see in *Image current API Metrics diagram*, there are multiple Endpoints, that are fetched. Each of those endpoints is created by a different API Server, the ```metrics.k8s.io``` f.e is created by K8s metrics-server. To scale the application we will host Prometheus, let it scrape our pods and collect all the Spring Boot Actuator metrics. After that we will host the prometheus-k8s-adapter *Link in links and futher reading* to provide the metrics to K8s.
+
+## Prerequisit
+To do this walkthrough, you need the following tools installed and working.
+1. **[minikube](https://github.com/kubernetes/minikube)** *(or any other way tu run K8s, but I only tested it with minikube)* including **kubectl**
+2. **[maven](https://maven.apache.org/)** or **[Gradle](https://gradle.org/)** to build the Spring Boot Application
+4. **[go](https://golang.org/)** to get some of the needed tools like **cfssl**
+3. **[cfssl](https://github.com/cloudflare/cfssl)** to create some certificates needed for the prometheus-k8s-adapter
+
+I highly recommend using the following Tools:
+1. **[hey](https://github.com/rakyll/hey)** HTTP load generator that is simple but very efficient
+2. **[jq](https://stedolan.github.io/jq/)** Easy to use JSON processor, since K8s APIs are not really formatted all the time
+
+Last but not least you will need an Spring Boot App with some Dependencies.
+
+## Spring Boot Sample App
+
 
 ## Deploy
-*Steps to take to deploy*
-1. Namespace
-2. Prometheus
-3. Adapter
-  - config can be tricky
-4. sample App
-  - annotations
+Let me describe all the needed steps to get this up and running. To make it easy I provide one deploy.yml file within my repository. I still recommend reading and doing all the needed steps ones.
+
+### Namespace
+This one is easy, everything I deploy lands in the namespace custom-metrics or default. As the namespace default is already there, I only have to create the namespace custom-metrics. Either use ```kubectl create namespace custom-metrics``` or the following YAML
+
+```yml
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: custom-metrics
+  labels:
+    name: custom-metrics
+```
+### Prometheus
+### Prometheus-K8s-Adapter
+### Sample App
 
 ## Testing if it works
 *Steps to take to check if everything worked*
@@ -41,10 +61,9 @@ As you can see in *Image current API Metrics diagram*, there are multiple Endpoi
 ## Conclusion
 *dificulty up, possibilities WAY UP*
 
-
-**IMAGE: HPA -> metrics-server -> Pods / -> adapter -> Prometheus -> Pods**
-
 ## Links and further reading
 Thanks a lot to the Work of all the people listed here. I highly recommend checking out all of the links.
 1. *kubernetes HPA documentation*
 2. *K8s Adapter github Link*
+3. *github Link to Repos for Artifacts*
+4. *Prometheus link*

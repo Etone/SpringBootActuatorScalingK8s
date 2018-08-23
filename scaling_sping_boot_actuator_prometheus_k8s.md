@@ -1,4 +1,4 @@
-# Scaling your Spring Boot Application an Custom Metrics in K8s
+# Scaling your Spring Boot Application on Custom Metrics in K8s
 The default way to scale Pods in Kubernetes is scaling by CPU Usage. It is easy to do so by just specifying a target CPU Utilization by which the HPA scales and call it a day. But what if your problem can't be reduced to a CPU Usage problem or you want to scale by some other metric, like requests or latency?
 
 I will explain to you, how you can use any metric you want to scale by using Spring Boot and Prometheus.
@@ -9,7 +9,7 @@ As you can see in *Image current API Metrics diagram*, there are multiple Endpoi
 
 ## Prerequisit
 To do this walkthrough, you need the following tools installed and working.
-1. **[minikube](https://github.com/kubernetes/minikube)** *(or any other way tu run K8s, but I only tested it with minikube)* including **kubectl**
+1. **[minikube](https://github.com/kubernetes/minikube)** *(or any other way to run K8s, but I only tested it with minikube)* including **kubectl**
 2. **[maven](https://maven.apache.org/)** or **[Gradle](https://gradle.org/)** to build the Spring Boot Application
 4. **[go](https://golang.org/)** to get some of the needed tools like **cfssl**
 3. **[cfssl](https://github.com/cloudflare/cfssl)** to create some certificates needed for the prometheus-k8s-adapter
@@ -21,7 +21,34 @@ I highly recommend using the following Tools:
 Last but not least you will need an Spring Boot App with some Dependencies.
 
 ## Spring Boot Sample App
+To scrape metrics from your App with Prometheus, there are some Dependencies needed. Fortunately the rest is auto configured ones those dependencies are added.
 
+```xml
+<!-- Prometheus, allows to publish metrics in Prometheus format -->
+<dependency>
+  <groupId>io.prometheus</groupId>
+  <artifactId>simpleclient</artifactId>
+  <version>0.5.0</version>
+</dependency>
+
+<!-- Spring Boot Metrics collector and management -->
+<dependency>
+  <groupId>io.micrometer</groupId>
+  <artifactId>micrometer-registry-prometheus</artifactId>
+  <version>1.0.6</version>
+</dependency>
+
+<!-- Provides basic Metrics like Health state -->
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+In my Sample App (which you can also find in the repository) I added one REST Endpoint, which generates some request metrics, on which i will scale. Of course you could add those dependencies to any Spring Boot App and get your Actuator metrics.
+
+The most important part about this is hidden in the auto configuration. Spring Boot will provide all the Actuator Metrics in the format used by Prometheus. The Endpoint for this is */actuator/prometheus*.
+
+*warning sign* **Do not forget to expose the actual endpoint within your application.properties**
 
 ## Deploy
 Let me describe all the needed steps to get this up and running. To make it easy I provide one deploy.yml file within my repository. I still recommend reading and doing all the needed steps ones.
@@ -38,6 +65,7 @@ metadata:
     name: custom-metrics
 ```
 ### Prometheus
+
 ### Prometheus-K8s-Adapter
 ### Sample App
 

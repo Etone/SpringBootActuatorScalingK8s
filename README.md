@@ -1,0 +1,1 @@
+SpringBootActuatorScalingK8s

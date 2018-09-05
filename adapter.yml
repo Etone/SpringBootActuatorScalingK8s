@@ -1,0 +1,192 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cm-adapter-serving-certs
+  namespace: custom-metrics
+data:
+  serving.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURlVENDQW1HZ0F3SUJBZ0lVYWR6Q2Y5cUhlUnVTLzNZQ3lDdkp1eUpZajJnd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0RURUxNQWtHQTFVRUF3d0NZMkV3SGhjTk1UZ3dPREUwTVRFMU9UQXdXaGNOTWpNd09ERXpNVEUxT1RBdwpXakFqTVNFd0h3WURWUVFERXhoamRYTjBiMjB0YldWMGNtbGpjeTFoY0dselpYSjJaWEl3Z2dFaU1BMEdDU3FHClNJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUURDWjZFYjZjYTRLRVN4UlFVdnVQTDNwdUErTHk2Y0ljM08KYklCamp0REhyWFN2RDRGQ25NeTVlUXc2WHBQM0ZWN0hzSG9TRE5MeHV2NWVVYkpKdlhVZFZRdXV1T2tqWExoNQp1K1VTdkptRjNUOGhvamRZTS9mQXdiTkV0alZOWXI0WmZ5TW5ORG40UGJSdmJITFBiVHRTMjZLUVJzMm43N1kzClJPUDNRL0Z3K05IRDVsdG5Cd3BnakxrNUlVN1hvRENWVnowNVZ4NU9ma3YzcXNveVlHVGJnZEFZOVFSNVZHTkMKNDJmci9kRkRXVGpvaFRlZXRtb2JSZWhTcGFOMW5oTytFVmVyaDZWeXN3Yk5mTXU0K01DNjFRZ1JuanIwaVVtUwpJRzRRdERLcStpSUFweUF5K2x4ekZpMGVqRkNFZndMVU5yaFhGckd6c1pVcVFTR0lhS1pSQWdNQkFBR2pnYm93CmdiY3dEZ1lEVlIwUEFRSC9CQVFEQWdXZ01Bd0dBMVVkRXdFQi93UUNNQUF3SFFZRFZSME9CQllFRkpzR0NqcUoKMmx2MW9GUmw0VnIxVTNzbG9XY21NQjhHQTFVZEl3UVlNQmFBRkNyZ2pBQk1JcE1TTTlqZExnZlZ4TjZxVCt0cgpNRmNHQTFVZEVRUlFNRTZDSTJOMWMzUnZiUzF0WlhSeWFXTnpMV0Z3YVhObGNuWmxjaTV0YjI1cGRHOXlhVzVuCmdpZGpkWE4wYjIwdGJXVjBjbWxqY3kxaGNHbHpaWEoyWlhJdWJXOXVhWFJ2Y21sdVp5NXpkbU13RFFZSktvWkkKaHZjTkFRRUxCUUFEZ2dFQkFCWlBDREZNZXNubFl1TitBM0g5eTlLQThqamlMc3Vtemp0cGs0YzhHZ1JCcnc3YwpyUW9naldtcjlPczJEc3A5ZUNIRVJ5UFd2S3RtQkNtVTZKL2VPOC8zeVR6STduSUE2V2dWK3pkN05qN29yMEhYCk5tZW1aZUZ4Mk81b0h0TWQ4K2svcjQ0WlNvWFkxUTFRc2tmTk1JalZUbU9HZ0VnamRFazNkcWNYTkNueVdUR20KVmR2akZ6N1NXSWNJK1h4YllJTGFRck4yL0pwV3NKTVltQ1ZUanZSaXBIZDBSLzRVV0t1VTBBU3ZKNXFtYm1pSAo2K3F4TUJ5RkdmeEtIOXl6Z0o2NEEwbUdqd2dDT2t5WXBUZElJcnlVeCtORnNvemlUWVJpTHNOK3BxTkZzUU93Cjd3U0c0aWlpMFlONTRMUFJlVk50N1Zud2k3TjFiWWZlb1ZOK0NHQT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  serving.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBd21laEcrbkd1Q2hFc1VVRkw3ank5NmJnUGk4dW5DSE56bXlBWTQ3UXg2MTBydytCClFwek11WGtNT2w2VDl4VmV4N0I2RWd6UzhicitYbEd5U2IxMUhWVUxycmpwSTF5NGVidmxFcnlaaGQwL0lhSTMKV0RQM3dNR3pSTFkxVFdLK0dYOGpKelE1K0QyMGIyeHl6MjA3VXR1aWtFYk5wKysyTjBUajkwUHhjUGpSdytaYgpad2NLWUl5NU9TRk8xNkF3bFZjOU9WY2VUbjVMOTZyS01tQmsyNEhRR1BVRWVWUmpRdU5uNi8zUlExazQ2SVUzCm5yWnFHMFhvVXFXamRaNFR2aEZYcTRlbGNyTUd6WHpMdVBqQXV0VUlFWjQ2OUlsSmtpQnVFTFF5cXZvaUFLY2cKTXZwY2N4WXRIb3hRaEg4QzFEYTRWeGF4czdHVktrRWhpR2ltVVFJREFRQUJBb0lCQUVoUU4vT2tJQkU4bVdDLwpaZEI4b1pSUmRMUnM1SStiVzJ6Zm0xcHRNMmd6TTJZekJFZjgvNEkyYnIvL2tsYWtrbDhCWEViK2tqRHM5OVdwCjJnSG9BWHBwdWpEQ0E2YnR4SWt6eFdBVTI1Nlp6L1A0M1ZGbjgwNjJQckxlZkRGTys1dU1XVTBwOWk1SzlhVkUKMStna241NlFxSVcyY0tWNVczUnZvY1RHZHpjb0VQUnk4LzdrUkJXbmY2eVlwcWVxdWhFcVZlNngwcFNzaGRWbQo4b2JxTytTRWpPQ2wvY0xEVVpJYkc5dnFSTHZFUE1DMm5BSHl6dng3clNNWnd2LzdpeTdBcWE0WHhUU09IRUlyCldwY09RVkdNY0FHTDZYSjV3MzF1d3pCakNRUmNDN3oxUmw3cmpiNy9Za3FpMTdqL3JjbXZBSFRLeDFlYmQvOUIKNm9iTmJTa0NnWUVBNkZtTzZUUG5uWFFDRmNiZVhaNkxvdGdYMXlucWpnaHFsTmNIVVc5Skg1YlZaVFhjdTFzNwpLYkI2UFZZV1R2aUNIZTBHcHgxSS9qY243VDBPR2lDdis3NmtDMTEwUDRqbW1EZjhnZ3ZGUGo3QVdZb2FpaUJkCjhzbS8xMHA2RWpXWjhFWnYvMC92cUZMUGtHU2NyVmlPZUY0YkM3a1lobW81WVpiamhnMWJZbDhDZ1lFQTFqRlMKRmZWSjNJTG5OQ2NoeVlENmZnZk5iV1o3Y09RR2lwcFhFTElucE9LTGcwenE1Uk1VOVRiMVpwUSthU0dFbjNvNgovZUdHeUY5cWhKOHc4Qjd5bzVrNjdlN0FRYU55ZlpPdGo3SGEycUpwdWNseE9CVENxYVZ0S2JlUW54dzFjL3JaCnZMbEV2MllPTDVOdEw5UE1XR0NDV3JBN0tMaDYvN3ZXcGJPTWxVOENnWUFSTGo0aEJGT0dFd1BzZEU0UkFoNDEKSm1GczZZNk1maGJUZHFyMTNKSzlvVHVhUmtkU0cwYmVxRXdCcVJIeE9QTDJINGEwYUxmekJFVVJoOGc1S2wyWQo4ZG5UZFUrWk94aEIvVEhRcytvYjFpd0c4dTFQZFdFOUNLb0UwMTcvWmJOQ1R4TU0vKzRxdGlUZStuR1RaODd4Ckc1UklZNkZxbndRck1Tc1Z5SHNQWlFLQmdRQ2Uxb1JnOUQySjRTbERhNkdLcExNZHN2dU1IV3Q5RkJ3bHZMN0UKQ3RtTFZOVFEwY0YvanQ4RDJYV3lWRXpUK1o4NEJKU3FvUXdxbTFlS2NlTUFybktSRDVpN3lVbVpZM1FMMisvaApsNnNNWjFTd0NjcUVKQ0VYWFMzT3VlbnRsQ1d2bEY3VHJUQm1IM0IxcDRaWTZWK29TaWxneHorWHV2YTducmhXCnVRZVAwUUtCZ1FEQlE0OVErRTF3S20vejZ2NFgweERLdEllN2I4RFozRGQyZXZ6bGViQ2VNbWxhZWxBNS93bHkKK1AwaHZud1pEYkFyNkVQcThsS3JvbGFtTGVTS2pPUFo0R0lsbUt3WjZtL2QrQTFkdWVTSDFHTTZubVlCb3dtWQo0ZWdJdmM1aitINFNSbUNCMUs4eHNyU055TE0vSXVwSlgxSnNLYmh2UGg2NkhUWWJMcGtCZkE9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQo=
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: custom-metrics:system:auth-delegator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:auth-delegator
+subjects:
+- kind: ServiceAccount
+  name: custom-metrics-apiserver
+  namespace: custom-metrics
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: custom-metrics-auth-reader
+  namespace: kube-system
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: extension-apiserver-authentication-reader
+subjects:
+- kind: ServiceAccount
+  name: custom-metrics-apiserver
+  namespace: custom-metrics
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: custom-metrics-apiserver
+  name: custom-metrics-apiserver
+  namespace: custom-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: custom-metrics-apiserver
+  template:
+    metadata:
+      labels:
+        app: custom-metrics-apiserver
+      name: custom-metrics-apiserver
+    spec:
+      serviceAccountName: custom-metrics-apiserver
+      containers:
+      - name: custom-metrics-apiserver
+        image: directxman12/k8s-prometheus-adapter-amd64
+        args:
+        - /adapter
+        - --secure-port=6443
+        - --tls-cert-file=/var/run/serving-cert/serving.crt
+        - --tls-private-key-file=/var/run/serving-cert/serving.key
+        - --logtostderr=true
+        - --prometheus-url=http://prometheus-service.custom-metrics.svc:8080/
+        - --metrics-relist-interval=1m
+        - --v=10
+        - --config=/etc/adapter/config.yaml
+        ports:
+        - containerPort: 6443
+        volumeMounts:
+        - mountPath: /var/run/serving-cert
+          name: volume-serving-cert
+          readOnly: true
+        - mountPath: /etc/adapter/
+          name: config
+          readOnly: true
+        - mountPath: /tmp
+          name: tmp-vol
+      volumes:
+      - name: volume-serving-cert
+        secret:
+          secretName: cm-adapter-serving-certs
+      - name: config
+        configMap:
+          name: adapter-config
+      - name: tmp-vol
+        emptyDir: {}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: custom-metrics-resource-reader
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: custom-metrics-resource-reader
+subjects:
+- kind: ServiceAccount
+  name: custom-metrics-apiserver
+  namespace: custom-metrics
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: custom-metrics-apiserver
+  namespace: custom-metrics
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: custom-metrics-apiserver
+  namespace: custom-metrics
+spec:
+  ports:
+  - port: 443
+    targetPort: 6443
+  selector:
+    app: custom-metrics-apiserver
+---
+apiVersion: apiregistration.k8s.io/v1beta1
+kind: APIService
+metadata:
+  name: v1beta1.custom.metrics.k8s.io
+spec:
+  service:
+    name: custom-metrics-apiserver
+    namespace: custom-metrics
+  group: custom.metrics.k8s.io
+  version: v1beta1
+  insecureSkipTLSVerify: true
+  groupPriorityMinimum: 100
+  versionPriority: 100
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: custom-metrics-server-resources
+rules:
+- apiGroups:
+  - custom.metrics.k8s.io
+  resources: ["*"]
+  verbs: ["*"]
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: adapter-config
+  namespace: custom-metrics
+data:
+  config.yaml: |
+    rules:
+    - seriesQuery: '{__name__="http_server_requests_seconds_count", job="kubernetes-pods", app="sample-app"}'
+      seriesFilters: []
+      resources:
+        overrides:
+          kubernetes_pod_name:
+            resource: pod
+          kubernetes_namespace:
+            resource: namespace
+      name:
+        matches: http_server_requests_seconds
+        as: requests_per_second
+      metricsQuery: rate({<<.Series>>, <<.LabelMatchers>>, uri="/requests"}[5m])
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: custom-metrics-resource-reader
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  - pods
+  - services
+  verbs:
+  - get
+  - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: hpa-controller-custom-metrics
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: custom-metrics-server-resources
+subjects:
+- kind: ServiceAccount
+  name: horizontal-pod-autoscaler
+  namespace: kube-system

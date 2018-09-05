@@ -150,7 +150,7 @@ metadata:
 data:
   config.yaml: |
     rules:
-    - seriesQuery: '{__name__="http_server_requests_seconds_count", job="kubernetes-pods", app="sample-app"}'
+    - seriesQuery: 'http_server_requests_seconds_count{job="kubernetes-pods", app="sample-app"}'
       seriesFilters: []
       resources:
         overrides:
@@ -159,9 +159,9 @@ data:
           kubernetes_namespace:
             resource: namespace
       name:
-        matches: http_server_requests_seconds
+        matches: http_server_requests_seconds_count
         as: requests_per_second
-      metricsQuery: rate({<<.Series>>, <<.LabelMatchers>>, uri="/requests"}[5m])
+      metricsQuery: rate(http_server_requests_seconds_count{job="kubernetes-pods", app="sample-app", uri="/requests", <<.LabelMatchers>>}[5m])
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
